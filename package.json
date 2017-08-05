@@ -3,7 +3,7 @@
   "displayName": "Open in Fork",
   "description": "Adds a command for opening the current project in Fork (a Git client).",
   "icon": "resources/logo-128x128.png",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "license": "MIT",
   "main": "out/src/extension.js",
   "publisher": "spacek33z",
