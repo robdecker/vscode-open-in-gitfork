@@ -1,27 +1,30 @@
-
 /* IMPORT */
 
-import * as openPath from 'open';
-import * as path from 'path';
-import * as vscode from 'vscode';
-import Utils from './utils';
+import openPath from "open";
+import * as path from "path";
+import * as vscode from "vscode";
+import Utils from "./utils";
 
 /* COMMANDS */
 
-function open () {
+function open() {
+  const { rootPath } = vscode.workspace;
 
-  const {rootPath} = vscode.workspace;
+  if (!rootPath)
+    return vscode.window.showErrorMessage(
+      "You have to open a project before being able to open it in Fork"
+    );
 
-  if ( !rootPath ) return vscode.window.showErrorMessage ( 'You have to open a project before being able to open it in Fork' );
+  const gitPath = path.join(rootPath, ".git");
 
-  const gitPath = path.join ( rootPath, '.git' );
+  if (!Utils.folder.exists(gitPath))
+    return vscode.window.showErrorMessage(
+      "The project needs to be a git repository for opening in Fork"
+    );
 
-  if ( !Utils.folder.exists ( gitPath ) ) return vscode.window.showErrorMessage ( 'The project needs to be a git repository for opening in Fork' );
-
-  openPath ( rootPath, 'Fork' );
-
+  openPath(rootPath, { app: { name: "Fork" } });
 }
 
 /* EXPORT */
 
-export {open};
+export { open };
