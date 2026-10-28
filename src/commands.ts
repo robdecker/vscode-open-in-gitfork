@@ -57,7 +57,10 @@ async function pickRepoPath(repoPaths: string[]): Promise<string | undefined> {
 
 /* COMMANDS */
 
-async function open() {
+// Invoked from the Source Control title bar, VS Code passes the clicked repo's SourceControl
+async function open(sourceControl?: vscode.SourceControl) {
+  if (sourceControl?.rootUri) return openInFork(sourceControl.rootUri.fsPath);
+
   const editorRepoPath = getActiveEditorRepoPath();
 
   if (editorRepoPath) return openInFork(editorRepoPath);

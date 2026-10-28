@@ -11,9 +11,22 @@
     "commands": [
       {
         "command": "openInGitFork.open",
-        "title": "Open in Fork"
+        "title": "Open in Fork",
+        "icon": {
+          "light": "resources/fork-light.svg",
+          "dark": "resources/fork-dark.svg"
+        }
       }
-    ]
+    ],
+    "menus": {
+      "scm/title": [
+        {
+          "command": "openInGitFork.open",
+          "when": "scmProvider == git",
+          "group": "navigation"
+        }
+      ]
+    }
   },
   "scripts": {
     "vscode:prepublish": "tsc -p ./",
