@@ -1,4 +1,5 @@
 ### Unreleased
+- Added multi-root workspace support
 - Raised minimum VS Code version to 1.74
 
 ### Version 1.0.2
