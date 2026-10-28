@@ -1,3 +1,6 @@
+### Unreleased
+- Raised minimum VS Code version to 1.74
+
 ### Version 1.0.2
 - Optimized activations events
 
